@@ -17,18 +17,17 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
-
 app.use(cors());
+
+// Definir o caminho da pasta estática
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Carrega Rotas
 const productRoute = require('./routes/products');
 app.use('/api/v1/products', productRoute);
 
-
-// Definir o caminho da pasta estática
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Define a variável PORT para armazenar o número da porta
 const PORT = process.env.PORT || 5000;
