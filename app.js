@@ -8,9 +8,8 @@ const path = require('path');
 // Carregar o arquivo config.env
 dotenv.config({ path: './config/config.env' });
 
-
 // Conectar ao Database
-db();
+db().then();
 
 
 // Criar Express App
@@ -22,6 +21,11 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.use(cors());
+
+// Carrega Rotas
+const productRoute = require('./routes/products');
+app.use('/api/v1/products', productRoute);
+
 
 // Definir o caminho da pasta estática
 app.use(express.static(path.join(__dirname, 'public')));
