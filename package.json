@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "import": "node seedData.js -i",
-    "generator": "node seedData.js -f",
+    "fakerData": "node seedData.js -f",
     "remove": "node seedData.js -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
