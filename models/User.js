@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
 
 const UserSchema = new mongoose.Schema({
     first_name: {
@@ -11,15 +13,31 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: [ true, "Por favor forneça o email"],
+        required: [true, "Por favor forneça o email"],
         unique: true
     },
     password: {
         type: String,
-        require: [ true, "Por favor insira uma senha"],
+        require: [true, "Por favor insira uma senha"],
         select: false
     }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
 });
 
+// Mostrar Propriedade Virtual Do Nome de Exibição
+UserSchema.virtual('full_name').get(function () {
+    return this.first_name + ' ' + this.last_name;
+});
+
+// Mongoose Middleware para Encrypt Password
+UserSchema.pre('save', async function () {
+    if (!this.isModified('password')) {
+        next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+});
 
 module.exports = mongoose.model('user', UserSchema);

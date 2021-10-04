@@ -26,7 +26,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Carrega Rotas
 const productRoute = require('./routes/products');
+const  userRoute = require('./routes/users');
+
+// Usa Rotas
 app.use('/api/v1/products', productRoute);
+app.use('/api/v1/users', userRoute);
 
 
 // Define a variável PORT para armazenar o número da porta

@@ -50,7 +50,8 @@ const fakerDataGenerator = async () => {
             await User.create({
                 "first_name": faker.name.firstName(),
                 "last_name": faker.name.lastName(),
-                "email": faker.internet.email()
+                "email": faker.internet.email(),
+                "password": faker.internet.password()
             });
         }
         console.log('Dados gerados com sucesso'.green.inverse);

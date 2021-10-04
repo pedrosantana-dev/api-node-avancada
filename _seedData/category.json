@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "_id": "61596f9fb51518577332b546",
+        "title": "Eletrônicos",
+        "description": "Produtos eletrônicos"
+    },
+    {
+        "_id": "61514f9fb58918577365b546",
+        "title": "Informática",
+        "description": "Produtos de informática"
+    },
+    {
+        "_id": "61526f9fb58918867332b736",
+        "title": "Smartphones",
+        "description": "Smartphones e acessórios"
+    },
+    {
+        "_id": "61532f9fb58917477332b546",
+        "title": "Gamers",
+        "description": "Jogos e consoles"
+    }
+]

@@ -5,14 +5,15 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "import": "node seedData.js -i",
-    "fakerData": "node seedData.js -f",
-    "remove": "node seedData.js -d",
+    "importData": "node seedData.js -i",
+    "generateFakerData": "node seedData.js -f",
+    "removeData": "node seedData.js -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pedro Santana",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
