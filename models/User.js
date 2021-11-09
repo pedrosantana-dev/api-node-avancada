@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         require: [true, "Por favor insira uma senha"],
-        select: false
+        // select: false
     }
 }, {
     toJSON: { virtuals: true },
@@ -40,4 +40,16 @@ UserSchema.pre('save', async function () {
     this.password = await bcrypt.hash(this.password, salt);
 });
 
-module.exports = mongoose.model('user', UserSchema);
+// Mongoose Middleware para comparar o password
+UserSchema.methods.comparePassword = function (candidatePassword, callback) {    
+    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+        if (err) {
+            return callback(err);
+        } else {
+            callback(null, isMatch);
+        }
+        
+    });
+};
+
+module.exports = mongoose.model('User', UserSchema);
